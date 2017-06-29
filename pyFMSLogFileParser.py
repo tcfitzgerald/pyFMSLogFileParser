@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='Python script to parse results of 
 parser.add_argument('input_file', metavar='input_file', type=str, help='Full path to file list you want to process.')
 parser.add_argument('fmp_server', metavar='server', type=str, help='FileMaker server FQDN (e.g. filemaker.example.com)')
 parser.add_argument('output_file', metavar='output_file', type=str, help='Name of file you want to render output to.')
-parser.add_argument('--include_client', metavar='include_client', help='Include client version info lines.', action="store_true")
+parser.add_argument('--include-client', help='Include client version info lines.', action="store_true")
 
 args = parser.parse_args()
 
