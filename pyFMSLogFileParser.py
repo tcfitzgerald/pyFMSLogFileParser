@@ -10,6 +10,8 @@ parser.add_argument('--include-client', help='Include client version info lines.
 
 args = parser.parse_args()
 
+
+
 list_file = args.input_file
 server = args.fmp_server
 output_file = args.output_file
@@ -20,8 +22,8 @@ with open(list_file, 'r') as f:
 
 date_regex = r"\d{4}-\d{2}-\d{2}"
 time_regex = r"\d{2}:\d{2}:\d{2}.\d{3}"
-account_name_regex = r"\"[a-zA-z0-9_.\-@, ]{0,}\""
-account_name_regex_end = r"\"[a-zA-z0-9_.\-@ ]{0,}\".$"
+account_name_regex = r"\"[a-zA-z0-9_.\-@,' \p{Pf}]{0,}\""
+account_name_regex_end = r"\"[a-zA-z0-9_.\-@,' \p{Pf}]{0,}\".$"
 client_regex = r"\"[a-zA-z0-9.\[\]\{\}_\- ]{0,}\".$"
 database_search_regex = r"database \"[a-zA-z0-9!@#$%^&()+=:'.,\[\]\{\}_\- ]{0,}\""
 database_regex = r"\"[a-zA-z0-9!@#$%^&()+=:'.,\[\]\{\}_\- ]{0,}\""
