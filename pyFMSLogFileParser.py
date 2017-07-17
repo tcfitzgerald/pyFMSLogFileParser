@@ -24,6 +24,7 @@ date_regex = r"\d{4}-\d{2}-\d{2}"
 time_regex = r"\d{2}:\d{2}:\d{2}.\d{3}"
 account_name_regex = r"\"[a-zA-z0-9_.\-@,' \u2018\u2019\u201c\u201d]{0,}\""
 account_name_regex_end = r"\"[a-zA-z0-9_.\-@,' \u2018\u2019\u201c\u201d]{0,}\".$"
+computer_regex = r"from \"[a-zA-Z0-9().\-_ \u2018\u2019\u201c\u201d]{0,}\""
 client_regex = r"\"[a-zA-z0-9.\[\]\{\}_\- ]{0,}\".$"
 database_search_regex = r"database \"[a-zA-z0-9!@#$%^&()+=:'.,\[\]\{\}_\- ]{0,}\""
 database_regex = r"\"[a-zA-z0-9!@#$%^&()+=:'.,\[\]\{\}_\- ]{0,}\""
@@ -47,6 +48,7 @@ for line in lines:
         time = re.search(time_regex, line).group()
         database_search = re.search(database_search_regex, line).group()
         database = re.search(database_regex, database_search).group().lstrip('"').rstrip('"')
+        computer = ""
 
         account_name = re.search(account_name_regex_end, line, re.MULTILINE).group().lstrip('"').rstrip('".')
 
@@ -63,6 +65,10 @@ for line in lines:
             date = re.search(date_regex, line).group()
             time = re.search(time_regex, line).group()
             account_name = re.search(account_name_regex, line).group().lstrip('"').rstrip('"')
+            try:
+                computer = re.search(computer_regex, line).group()
+            except AttributeError:
+                computer = ""
             client = re.search(client_regex, line, re.MULTILINE).group().lstrip('"').rstrip('".')
 
             newline = [server, date, time, account_name, client]
