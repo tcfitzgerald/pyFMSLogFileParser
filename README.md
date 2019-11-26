@@ -2,6 +2,16 @@
 
 Parses Access.log file from FileMaker Server.
 
+Requires Python 3.2 or later.
+
+# Usage
+
+python pyFMSLogFileParser Access.log filemakerserver.host access_log_processed.csv
+
+If you want to include a column that has the FileMaker client version just add the --include-client argument
+
+python pyFMSLogFileParser --include-client Access.log filemakerserver.host access_log_processed.csv
+
 # Notes
 FileMaker Server Log parsing regex
 
